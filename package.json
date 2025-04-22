@@ -3,5 +3,8 @@
   "uuid": "956fdbd5-4348-4ef4-9dce-8fac431a6bae",
   "creator": {
     "version": "3.8.5"
+  },
+  "dependencies": {
+    "miniprogram-api-typings": "^4.0.7"
   }
 }
