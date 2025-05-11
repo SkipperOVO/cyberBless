@@ -39,5 +39,14 @@ export class StartBurnController extends Component {
     showStartBurnButton() {
         this.node.parent.active = true; // 显示按钮的父节点
     }
+
+    checkHasInsenseReady() {
+        console.log("checkHasInsenseReady insenseUINode", this.insenseUINode.children.length);
+        if (this.insenseUINode.children.length > 0) {
+            return true;
+        }
+        return false;
+    }
+
 }
 
