@@ -10,14 +10,22 @@ export class startIssuseInsenseController extends Component {
     private insenseStockPanel: Node = null;
 
     @property({
-        type: Node
+        type: Node,
     })
-    private cancelNode : Node = null;
+    private faithStockPanel: Node = null;
+
+    @property({
+        type: Node,
+    })
+    private backgroundStockPanel: Node = null;
+
+
 
     @property({
         type: Node
     })
-    private confirmNode : Node = null;
+    private optionPanel: Node = null;
+ 
 
     start() {
 
@@ -29,9 +37,7 @@ export class startIssuseInsenseController extends Component {
 
     onClick() {
         console.log("startIssuseInsenseController onClick");
-        this.insenseStockPanel.active = true;
-        this.cancelNode.active = true
-        this.confirmNode.active = true
+        this.optionPanel.active = true
         this.node.active = false;  // 隐藏按钮的父节点(带着按钮的背景和按钮一起隐藏)
     }
 

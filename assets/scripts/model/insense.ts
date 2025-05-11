@@ -4,13 +4,16 @@ export class Insense {
     private scoreType: string = "";
     private score: number = 0;
     private insenseId: number = 0;
+    private numberOfInsence: number = 1;
 
-    constructor(insenseName: string, burningTime: number, scoreType: string, score: number, insenseId: number) {
+    constructor(insenseName: string, burningTime: number,
+         scoreType: string, score: number, numberOfInsence: number, insenseId: number) {
         this.insenseName = insenseName;
         this.burningTime = burningTime;
         this.scoreType = scoreType;
         this.score = score;
         this.insenseId = insenseId;
+        this.numberOfInsence = numberOfInsence
     }
 
     // Getter and Setter for insenseName
@@ -56,4 +59,9 @@ export class Insense {
     public setInsenseId(id: number): void {
         this.insenseId = id;
     }
+
+    public getNumberOfInsence(): number {
+        return this.numberOfInsence;
+    }
+
 }

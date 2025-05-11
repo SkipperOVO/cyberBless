@@ -1,4 +1,4 @@
-import { _decorator, Component, instantiate, Node, Prefab, Vec3 } from 'cc';
+import { _decorator, Component, instantiate, Node, Prefab } from 'cc';
 import { InsenseRepository } from './repository/insenseRepo';
 import { Insense } from './model/insense';
 const { ccclass, property } = _decorator;
@@ -23,13 +23,13 @@ export class insenseStockController extends Component {
         // this.node.removeAllChildren();
         // 从数据库拉取所有的 insense
         const insenses = this.getAllInsenseFromDB();
-        for (let i = 0; i < insenses.length; i++) {
+        for (let i = insenses.length-1; i >= 0; i--) {
             const ins = instantiate(this.insenseItemPrefab);
             //todo ins.position = new Vec3(0, i * 500, 0);
             //todo 根据数据库中的 insense 设置 UI prefab 
             ins.getComponent("insenseItemController").setInsenseModel(insenses[i]);
             ins.getComponent("insenseItemController").setBurningInsenseNode(this.insenseBurningNode);
-            this.node.addChild(ins);
+            this.node.insertChild(ins, 0);
         }
     }
 

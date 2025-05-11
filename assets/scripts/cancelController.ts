@@ -6,20 +6,28 @@ export class cancelController extends Component {
 
     @property({
         type: Node,
+        tooltip: 'insenseStockPanel',
     })
     private insenseStockPanel : Node = null;
 
     @property({
         type: Node,
+        tooltip: 'startIsseueInsenseButton',
     })
-    private startBurnButtonNode : Node = null;
+    private startIsseueInsenseButton : Node = null;
+
+
+    @property({
+        type: Node,
+    })
+    private optionPanel : Node = null;
+
 
 
     start() {
     }
 
     protected onLoad(): void {
-        this.node.active = false
     }
 
     update(deltaTime: number) {
@@ -27,9 +35,8 @@ export class cancelController extends Component {
     }
 
     onClick() {
-        this.node.parent.active = false
-        this.insenseStockPanel.active = false
-        this.startBurnButtonNode.getComponent("StartBurnController").showStartBurnButton()
+        this.startIsseueInsenseButton.getComponent("startIssuseInsenseController").show()
+        this.optionPanel.active = false
     }
 }
 

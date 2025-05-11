@@ -71,7 +71,7 @@ export class insenseItemController extends Component {
         if (insenseSpriteFrameNode) {
             const spriteComponent = insenseSpriteFrameNode.getComponent(Sprite);
             if (spriteComponent) {
-                resources.load(this.insenseModel.getInsenseName() + '/spriteFrame', SpriteFrame, (err, spriteFrame) => {
+                resources.load(this.insenseModel.getInsenseName() + "-min" + '/spriteFrame', SpriteFrame, (err, spriteFrame) => {
                     if (err) {
                         console.error('Failed to load sprite frame:', err);
                         // Provide a fallback or notify the user

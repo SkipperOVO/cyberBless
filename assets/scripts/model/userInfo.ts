@@ -60,4 +60,8 @@ export class UserInfo {
     getTotalScore(): number {
         return this.totalScore;
     }
+
+    setTotalScore(value: number): void {
+        this.totalScore = value;
+    }
 }

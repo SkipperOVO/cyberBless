@@ -14,12 +14,16 @@ export class confirmController extends Component {
     })
     private startBurnButtonNode : Node = null;
 
+    @property({
+        type: Node,
+    })
+    private optionPanel : Node = null;
+
 
     start() {
     }
 
     protected onLoad(): void {
-        this.node.active = false
     }
 
     update(deltaTime: number) {
@@ -27,8 +31,8 @@ export class confirmController extends Component {
     }
 
     onClick() {
-        this.node.parent.active = false
-        this.insenseStockPanel.active = false
+        // 需要添加检查是选定了香才可以执行后续逻辑
+        this.optionPanel.active = false
         this.startBurnButtonNode.getComponent("StartBurnController").showStartBurnButton()
     }
 }
