@@ -1,4 +1,4 @@
-import { _decorator, CCBoolean, CCInteger, Component, Node, random, UITransform, Color} from 'cc';
+import { _decorator, CCBoolean, CCInteger, Component, Node, random, UITransform, Color, Mask, Size} from 'cc';
 import { UserInfo } from './model/userInfo';
 import { Insense } from './model/insense';
 import { Sprite, SpriteFrame, resources } from 'cc';
@@ -54,6 +54,7 @@ export class burningController extends Component {
                 const spriteNode = new Node('BurningInsenseSprite-' + i);
                 const sprite = spriteNode.addComponent(Sprite);
                 sprite.spriteFrame = spriteFrame;
+                sprite.sizeMode = Sprite.SizeMode.CUSTOM;
 
                 // 获取父节点的尺寸
                 // const parentTransform = this.node.getComponent(UITransform);
@@ -75,16 +76,28 @@ export class burningController extends Component {
                 // 获取 spriteNode 香的尺寸
                 const spriteTransform = spriteNode.getComponent(UITransform);
                 const spriteSize = spriteTransform.contentSize;
+                console.log("spriteSize: ", spriteSize);
+
+                // 构造 Mask 遮罩节点
+                const maskNode = new Node('MaskNode');
+                const uiTransfrom = maskNode.addComponent(UITransform);
+                const mask = maskNode.addComponent(Mask);
+
 
                 const totalSpan = insense.getNumberOfInsence() * spriteSize.x + 20 * (insense.getNumberOfInsence() - 1);
-                spriteNode.setPosition(0 - totalSpan / 2 + i * (spriteSize.x + 20), burnerSize.y / 2 - 20, 0); // Set to the center
+                maskNode.setPosition(0 - totalSpan / 2 + i * (spriteSize.x + 20), burnerSize.y / 2 - 120, 0); // Set to the center
 
                 // spriteNode.setPosition(0 - spriteSize.x / 2, burnerSize.y / 2 - 20, 0); // Set to the center
 
                 console.log("spriteNode position", spriteNode.position);
 
                 spriteNode.getComponent(UITransform).setAnchorPoint(0, 0);
-                this.node.addChild(spriteNode);
+
+
+                mask.node.getComponent(UITransform).setContentSize(spriteSize.x, spriteSize.y);
+                mask.node.getComponent(UITransform).setAnchorPoint(0, 0);
+                this.node.addChild(maskNode);
+                mask.node.addChild(spriteNode);
             });
         }
 
@@ -153,38 +166,45 @@ export class burningController extends Component {
         //     return
         // }
 
-        const insenseNodes = [];
-        for (let i = 0; i < this.insense.getNumberOfInsence(); i++) {
-            const insenseNode = this.node.getChildByName("BurningInsenseSprite-" + i);
-            insenseNodes.push(insenseNode);
+        const insenseMasks = [];
+        for (let i = 0; i < this.node.children.length; i++) {
+            const mask = this.node.children[i];
+            insenseMasks.push(mask);
 
             // Add a red rectangle at the top of each insenseNode
-            let redRectNode = insenseNode.getChildByName("RedRect");
+            let redRectNode = mask.children[0].getChildByName("RedRect");
             if (!redRectNode) {
-                const size = insenseNode.getComponent(UITransform).contentSize;
+                const size = mask.getComponent(UITransform).contentSize;
                 redRectNode = new Node("RedRect");
                 const redRectTransform = redRectNode.addComponent(UITransform);
-                redRectTransform.setContentSize(size.width, size.height / 20);
+                console.log("mask size", size);
+                redRectTransform.setAnchorPoint(0, 1);
 
                 const redSprite = redRectNode.addComponent(Sprite);
-                redSprite.color = new Color(255, Math.random() * 100, Math.random() * 100); // Random red shades
+                // redSprite.color = new Color(255, Math.random() * 100, Math.random() * 100); // Random red shades
+                // 设置 sizeMode 为 CUSTOM
+                redSprite.sizeMode = Sprite.SizeMode.CUSTOM;
 
                 // Assign a default SpriteFrame to make the redRectNode visible
-                resources.load('red/spriteFrame', SpriteFrame, (err, spriteFrame) => {
+                resources.load('BurningIncenseHead/spriteFrame', SpriteFrame, (err, spriteFrame) => {
                     if (!err) {
                         redSprite.spriteFrame = spriteFrame;
+                        redSprite.sizeMode = Sprite.SizeMode.CUSTOM;
+
+                        // 确保在设置 spriteFrame 后重新触发尺寸更新
+                        redRectTransform.setContentSize(size.width, size.height / 20);
                     } else {
                         console.error('Failed to load default sprite frame:', err);
                     }
                 });
                 
-                redRectNode.setPosition(0, size.height, 0);
-                redRectNode.getComponent(UITransform).setAnchorPoint(0, 0);
-                insenseNode.addChild(redRectNode);
+                redRectNode.setPosition(0, size.height-size.height/20+10, 0);
+                redRectTransform.setContentSize(size.width, size.height / 20);
+                mask.children[0].addChild(redRectNode);
             }
             // Update the RedRect color to a random deep red color
-            const deepRedColor = new Color(255, Math.random()*100, Math.random()*100);
-            redRectNode.getComponent(Sprite).color = deepRedColor;
+            // const deepRedColor = new Color(255, Math.random()*100, Math.random()*100);
+            // redRectNode.getComponent(Sprite).color = deepRedColor;
         }
 
         // if (this._burnCyclesRemaining <= 0) {
@@ -210,12 +230,12 @@ export class burningController extends Component {
         this.timeEplapsed += deltaTime; 
 
         // 检查所有香总体燃烧进度是否超过 75%，如果超过那么就不再添加随机燃烧速率波动
-        let totalProgress = 0;
-        for (let i = 0; i < insenseNodes.length; i++) {
-            const node = insenseNodes[i];
-            totalProgress += 1 - node.scale.y;
+        let totalCurHeight = 0;
+        for (let i = 0; i < insenseMasks.length; i++) {
+            const node = insenseMasks[i];
+            totalCurHeight += node.getComponent(UITransform).contentSize.height;
         }
-        totalProgress /= insenseNodes.length;
+        let totalProgress = totalCurHeight / (3 * insenseMasks[0].children[0].getComponent(UITransform).contentSize.height);
         // console.log("totalProgress", totalProgress);
         if (totalProgress > 0.75) {
             this._currentBurnRate = 1;
@@ -228,39 +248,41 @@ export class burningController extends Component {
 
         // 根据当前已经燃烧过的时间和剩余的时间，计算所有香能够在燃烧时间内完成燃烧应该有的总体速率
         const remainingTime = this.timeQuota - this.timeEplapsed;
-        // 计算所有香剩余的 scale y 长度和，用于计算还有多少没有燃尽
-        let totalScaleY = 0;
-        for (let i = 0; i < insenseNodes.length; i++) {
-            const node = insenseNodes[i];
-            totalScaleY += node.scale.y;
-        }
+        
         // 计算剩余没有燃尽的香当前能够完成燃尽应该有的总体速率
-        const totalBurnRate = (totalScaleY / remainingTime) * deltaTime;
+        const totalBurnRate = (totalCurHeight / remainingTime) * deltaTime;
         // console.log("totalBurnRate", totalBurnRate);
 
         // 随机挑选一根香燃烧, 且香的 scale y 大于 0
-        let insenseNode: Node = null;
-        const tmpInsenseNodes = insenseNodes.filter(node => node.scale.y > 0);
-        while (!insenseNode && tmpInsenseNodes.length > 0) {
+        let insenseMask: Node = null;
+        const tmpInsenseNodes = insenseMasks.filter(node => node.getComponent(UITransform).contentSize.height > 0);
+        while (!insenseMask && tmpInsenseNodes.length > 0) {
             const rIdx = Math.floor(Math.random() * tmpInsenseNodes.length);
             const cand = tmpInsenseNodes[rIdx];
-            if (cand.scale.y > 0) {
-                insenseNode = cand;
+            if (cand.getComponent(UITransform).contentSize.height > 0) {
+                insenseMask = cand;
             } else {
                 tmpInsenseNodes.splice(rIdx, 1);
             }
         }
 
-        if (insenseNode) {
-            const newScaleY = insenseNode.scale.y - totalBurnRate;
-            if (this.timeEplapsed <= this.timeQuota || newScaleY > 0) {
-                insenseNode.setScale(insenseNode.scale.x, newScaleY, insenseNode.scale.z);
+        if (insenseMask) {
+            const maskNewHeight = insenseMask.getComponent(UITransform).contentSize.height - totalBurnRate;
+            const oldWidth = insenseMask.getComponent(UITransform).contentSize.width;
+            if (this.timeEplapsed <= this.timeQuota || maskNewHeight > 0) {
+                insenseMask.getComponent(UITransform).setContentSize(new Size(oldWidth, maskNewHeight));
             } else {
-                insenseNode.setScale(insenseNode.scale.x, 0, insenseNode.scale.z);
+                insenseMask.getComponent(UITransform).setContentSize(new Size(oldWidth, 0));
             }
+            const redRectNode = insenseMask.children[0].getChildByName("RedRect");
+            if (redRectNode) {
+                const redRectTransform = redRectNode.getComponent(UITransform);
+                redRectNode.setPosition(redRectNode.position.x, maskNewHeight+5, redRectNode.position.z);
+            }
+
         }
         
-        if (totalProgress >= 1) {
+        if (totalProgress <= 0) {
             this.stopBurn();
             this.insense = null;
             this.node.removeAllChildren();

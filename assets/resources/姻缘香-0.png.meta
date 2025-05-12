@@ -2,7 +2,7 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "6eee1adc-92e0-4e4d-8dc0-b75101ab56ae",
+  "uuid": "cf757704-0133-48a5-bd8a-bf1864d7b2be",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "6eee1adc-92e0-4e4d-8dc0-b75101ab56ae@6c48a",
-      "displayName": "incense-005-2",
+      "uuid": "cf757704-0133-48a5-bd8a-bf1864d7b2be@6c48a",
+      "displayName": "姻缘香-0",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "6eee1adc-92e0-4e4d-8dc0-b75101ab56ae",
+        "imageUuidOrDatabaseUri": "cf757704-0133-48a5-bd8a-bf1864d7b2be",
         "isUuid": true,
         "visible": false,
         "minfilter": "linear",
@@ -34,22 +34,22 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "6eee1adc-92e0-4e4d-8dc0-b75101ab56ae@f9941",
-      "displayName": "incense-005-2",
+      "uuid": "cf757704-0133-48a5-bd8a-bf1864d7b2be@f9941",
+      "displayName": "姻缘香-0",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
-        "trimType": "auto",
+        "trimType": "custom",
         "trimThreshold": 1,
         "rotated": false,
-        "offsetX": 4,
-        "offsetY": 0,
-        "trimX": 46,
+        "offsetX": -42,
+        "offsetY": 464,
+        "trimX": 0,
         "trimY": 0,
-        "width": 90,
-        "height": 886,
-        "rawWidth": 174,
-        "rawHeight": 886,
+        "width": 40,
+        "height": 500,
+        "rawWidth": 124,
+        "rawHeight": 1428,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
@@ -61,17 +61,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -45,
-            -443,
+            -20,
+            -250,
             0,
-            45,
-            -443,
+            20,
+            -250,
             0,
-            -45,
-            443,
+            -20,
+            250,
             0,
-            45,
-            443,
+            20,
+            250,
             0
           ],
           "indexes": [
@@ -83,38 +83,38 @@
             3
           ],
           "uv": [
-            46,
-            886,
-            136,
-            886,
-            46,
             0,
-            136,
-            0
+            1428,
+            40,
+            1428,
+            0,
+            928,
+            40,
+            928
           ],
           "nuv": [
-            0.26436781609195403,
             0,
-            0.7816091954022989,
+            0.6498599439775911,
+            0.3225806451612903,
+            0.6498599439775911,
             0,
-            0.26436781609195403,
             1,
-            0.7816091954022989,
+            0.3225806451612903,
             1
           ],
           "minPos": [
-            -45,
-            -443,
+            -20,
+            -250,
             0
           ],
           "maxPos": [
-            45,
-            443,
+            20,
+            250,
             0
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "6eee1adc-92e0-4e4d-8dc0-b75101ab56ae@6c48a",
+        "imageUuidOrDatabaseUri": "cf757704-0133-48a5-bd8a-bf1864d7b2be@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.12",
@@ -129,6 +129,6 @@
     "type": "sprite-frame",
     "hasAlpha": true,
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "6eee1adc-92e0-4e4d-8dc0-b75101ab56ae@6c48a"
+    "redirect": "cf757704-0133-48a5-bd8a-bf1864d7b2be@6c48a"
   }
 }

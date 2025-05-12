@@ -5,14 +5,12 @@ export class InsenseRepository {
     getAll(): Insense[] {
         // Replace with actual database or data service logic
         const mockData: Insense[] = [
-            new Insense("incense-001", 2, "Intelligence", 20, 1, 1),
-            new Insense("incense-001", 7, "Intelligence", 11, 1, 1),
-            new Insense("incense-001", 13, "Intelligence", 9, 1, 1),
-            new Insense("incense-001", 19, "Intelligence", 18, 1, 1),
-            // new Insense("incense-002", 2, "Emotion", 25, 1,  2),
-            // new Insense("incense-003", 2, "Health", 30, 1, 3),
-            // new Insense("incense-004", 2, "Rich", 35, 1, 4),
-            new Insense("incense-005", 10, "Health", 10, 3, 5),
+            new Insense("功德香", 10, "score", 20, 1, 1),
+            new Insense("幸运香", 7, "score", 11, 1, 2),
+            new Insense("姻缘香", 7, "Emotion", 11, 1, 3),
+            new Insense("长寿香", 13, "Health", 9, 1, 4),
+            new Insense("聪明香", 19, "Intelligence", 18, 1, 5),
+            new Insense("发财香", 120, "Rich", 30, 3, 6),
         ];
         return mockData;
         // return []; // Placeholder for fetched data

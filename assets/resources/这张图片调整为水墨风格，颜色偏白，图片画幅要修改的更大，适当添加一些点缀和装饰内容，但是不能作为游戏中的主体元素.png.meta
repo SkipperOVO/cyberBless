@@ -2,7 +2,7 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "f88b8a8d-e089-4503-b005-239ddaa3910b",
+  "uuid": "5e8f3a5b-a50e-42d0-b974-cc135d288626",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "f88b8a8d-e089-4503-b005-239ddaa3910b@6c48a",
-      "displayName": "incense-001-0",
+      "uuid": "5e8f3a5b-a50e-42d0-b974-cc135d288626@6c48a",
+      "displayName": "这张图片调整为水墨风格，颜色偏白，图片画幅要修改的更大，适当添加一些点缀和装饰内容，但是不能作为游戏中的主体元素",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "f88b8a8d-e089-4503-b005-239ddaa3910b",
+        "imageUuidOrDatabaseUri": "5e8f3a5b-a50e-42d0-b974-cc135d288626",
         "isUuid": true,
         "visible": false,
         "minfilter": "linear",
@@ -34,8 +34,8 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "f88b8a8d-e089-4503-b005-239ddaa3910b@f9941",
-      "displayName": "incense-001-0",
+      "uuid": "5e8f3a5b-a50e-42d0-b974-cc135d288626@f9941",
+      "displayName": "这张图片调整为水墨风格，颜色偏白，图片画幅要修改的更大，适当添加一些点缀和装饰内容，但是不能作为游戏中的主体元素",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
@@ -46,10 +46,10 @@
         "offsetY": 0,
         "trimX": 0,
         "trimY": 0,
-        "width": 20,
-        "height": 460,
-        "rawWidth": 20,
-        "rawHeight": 460,
+        "width": 1024,
+        "height": 1536,
+        "rawWidth": 1024,
+        "rawHeight": 1536,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
@@ -61,17 +61,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -10,
-            -230,
+            -512,
+            -768,
             0,
-            10,
-            -230,
+            512,
+            -768,
             0,
-            -10,
-            230,
+            -512,
+            768,
             0,
-            10,
-            230,
+            512,
+            768,
             0
           ],
           "indexes": [
@@ -84,12 +84,12 @@
           ],
           "uv": [
             0,
-            460,
-            20,
-            460,
+            1536,
+            1024,
+            1536,
             0,
             0,
-            20,
+            1024,
             0
           ],
           "nuv": [
@@ -103,18 +103,18 @@
             1
           ],
           "minPos": [
-            -10,
-            -230,
+            -512,
+            -768,
             0
           ],
           "maxPos": [
-            10,
-            230,
+            512,
+            768,
             0
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "f88b8a8d-e089-4503-b005-239ddaa3910b@6c48a",
+        "imageUuidOrDatabaseUri": "5e8f3a5b-a50e-42d0-b974-cc135d288626@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.12",
@@ -127,8 +127,8 @@
   },
   "userData": {
     "type": "sprite-frame",
-    "hasAlpha": true,
+    "hasAlpha": false,
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "f88b8a8d-e089-4503-b005-239ddaa3910b@6c48a"
+    "redirect": "5e8f3a5b-a50e-42d0-b974-cc135d288626@6c48a"
   }
 }
