@@ -544,13 +544,13 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 92,
-      "g": 62,
-      "b": 31,
+      "r": 247,
+      "g": 229,
+      "b": 210,
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "2ff10a30-1f8a-4d6a-a030-7c0c288849c3@f9941",
+      "__uuid__": "2751f67e-50ef-41c6-b702-98800a4118d9@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -1039,8 +1039,8 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 173,
-      "g": 90,
+      "r": 97,
+      "g": 50,
       "b": 0,
       "a": 255
     },
@@ -1286,7 +1286,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 136.316,
-      "y": -17.875,
+      "y": -2.554,
       "z": 0
     },
     "_lrot": {
@@ -1445,7 +1445,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 243.447,
-      "y": -17.363,
+      "y": -3.575,
       "z": 0
     },
     "_lrot": {
@@ -1516,9 +1516,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 143,
-      "g": 66,
-      "b": 6,
+      "r": 104,
+      "g": 45,
+      "b": 0,
       "a": 255
     },
     "_string": "30 秒",
@@ -1754,7 +1754,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 380,
-      "height": 250
+      "height": 200
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1804,14 +1804,11 @@
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
-      "g": 255,
-      "b": 255,
+      "g": 253,
+      "b": 253,
       "a": 255
     },
-    "_spriteFrame": {
-      "__uuid__": "5cee4b5c-f3b6-4b08-8161-5487e04a6701@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_fillType": 0,
     "_sizeMode": 0,

@@ -2,7 +2,7 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "805ba648-b1ab-44ff-a7b2-bcc31ed787c5",
+  "uuid": "ef41db16-247d-4d06-8072-6e8edef5f9c1",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "805ba648-b1ab-44ff-a7b2-bcc31ed787c5@6c48a",
+      "uuid": "ef41db16-247d-4d06-8072-6e8edef5f9c1@6c48a",
       "displayName": "BurningIncenseHead",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "805ba648-b1ab-44ff-a7b2-bcc31ed787c5",
+        "imageUuidOrDatabaseUri": "ef41db16-247d-4d06-8072-6e8edef5f9c1",
         "isUuid": true,
         "visible": false,
         "minfilter": "linear",
@@ -34,7 +34,7 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "805ba648-b1ab-44ff-a7b2-bcc31ed787c5@f9941",
+      "uuid": "ef41db16-247d-4d06-8072-6e8edef5f9c1@f9941",
       "displayName": "BurningIncenseHead",
       "id": "f9941",
       "name": "spriteFrame",
@@ -43,13 +43,13 @@
         "trimThreshold": 1,
         "rotated": false,
         "offsetX": 0,
-        "offsetY": 2,
-        "trimX": 2,
-        "trimY": 0,
-        "width": 112,
-        "height": 147,
-        "rawWidth": 116,
-        "rawHeight": 151,
+        "offsetY": -1.5,
+        "trimX": 0,
+        "trimY": 3,
+        "width": 420,
+        "height": 451,
+        "rawWidth": 420,
+        "rawHeight": 454,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
@@ -61,17 +61,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -56,
-            -73.5,
+            -210,
+            -225.5,
             0,
-            56,
-            -73.5,
+            210,
+            -225.5,
             0,
-            -56,
-            73.5,
+            -210,
+            225.5,
             0,
-            56,
-            73.5,
+            210,
+            225.5,
             0
           ],
           "indexes": [
@@ -83,38 +83,38 @@
             3
           ],
           "uv": [
-            2,
-            151,
-            114,
-            151,
-            2,
-            4,
-            114,
-            4
+            0,
+            451,
+            420,
+            451,
+            0,
+            0,
+            420,
+            0
           ],
           "nuv": [
-            0.017241379310344827,
-            0.026490066225165563,
-            0.9827586206896551,
-            0.026490066225165563,
-            0.017241379310344827,
+            0,
+            0,
             1,
-            0.9827586206896551,
-            1
+            0,
+            0,
+            0.9933920704845814,
+            1,
+            0.9933920704845814
           ],
           "minPos": [
-            -56,
-            -73.5,
+            -210,
+            -225.5,
             0
           ],
           "maxPos": [
-            56,
-            73.5,
+            210,
+            225.5,
             0
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "805ba648-b1ab-44ff-a7b2-bcc31ed787c5@6c48a",
+        "imageUuidOrDatabaseUri": "ef41db16-247d-4d06-8072-6e8edef5f9c1@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.12",
@@ -129,6 +129,6 @@
     "type": "sprite-frame",
     "hasAlpha": true,
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "805ba648-b1ab-44ff-a7b2-bcc31ed787c5@6c48a"
+    "redirect": "ef41db16-247d-4d06-8072-6e8edef5f9c1@6c48a"
   }
 }

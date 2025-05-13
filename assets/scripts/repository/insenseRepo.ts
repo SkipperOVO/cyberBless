@@ -5,7 +5,7 @@ export class InsenseRepository {
     getAll(): Insense[] {
         // Replace with actual database or data service logic
         const mockData: Insense[] = [
-            new Insense("功德香", 10, "score", 20, 1, 1),
+            new Insense("功德香", 15, "score", 20, 1, 1),
             new Insense("幸运香", 7, "score", 11, 1, 2),
             new Insense("姻缘香", 7, "Emotion", 11, 1, 3),
             new Insense("长寿香", 13, "Health", 9, 1, 4),

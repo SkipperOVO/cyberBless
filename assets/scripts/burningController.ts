@@ -168,17 +168,21 @@ export class burningController extends Component {
 
         const insenseMasks = [];
         for (let i = 0; i < this.node.children.length; i++) {
+            // 过滤掉同一层级的香的燃烧头部节点, 只处理 Mask 节点
+            if (this.node.children[i].name.includes("RedRect")) {
+                continue;
+            }
             const mask = this.node.children[i];
             insenseMasks.push(mask);
 
+            const idx = parseInt(mask.children[0].name.split('-').pop());
             // Add a red rectangle at the top of each insenseNode
-            let redRectNode = mask.children[0].getChildByName("RedRect");
+            let redRectNode = this.node.getChildByName("RedRect-"+idx);
             if (!redRectNode) {
                 const size = mask.getComponent(UITransform).contentSize;
-                redRectNode = new Node("RedRect");
+                redRectNode = new Node("RedRect-"+idx);
                 const redRectTransform = redRectNode.addComponent(UITransform);
                 console.log("mask size", size);
-                redRectTransform.setAnchorPoint(0, 1);
 
                 const redSprite = redRectNode.addComponent(Sprite);
                 // redSprite.color = new Color(255, Math.random() * 100, Math.random() * 100); // Random red shades
@@ -186,21 +190,25 @@ export class burningController extends Component {
                 redSprite.sizeMode = Sprite.SizeMode.CUSTOM;
 
                 // Assign a default SpriteFrame to make the redRectNode visible
+                const maskPosition = mask.getPosition();
                 resources.load('BurningIncenseHead/spriteFrame', SpriteFrame, (err, spriteFrame) => {
                     if (!err) {
                         redSprite.spriteFrame = spriteFrame;
                         redSprite.sizeMode = Sprite.SizeMode.CUSTOM;
 
                         // 确保在设置 spriteFrame 后重新触发尺寸更新
-                        redRectTransform.setContentSize(size.width, size.height / 20);
+                        redRectTransform.setContentSize(size.width, size.height / 16);
+                        redRectTransform.setAnchorPoint(0, 0);
+                        redRectNode.setPosition(maskPosition.x, size.height + maskPosition.y-15, maskPosition.z);
+                        console.log("redRectNode position", redRectNode.position);  
                     } else {
                         console.error('Failed to load default sprite frame:', err);
                     }
                 });
+                // redRectNode.setPosition(maskPosition.x, size.height + maskPosition.y, maskPosition.z);
                 
-                redRectNode.setPosition(0, size.height-size.height/20+10, 0);
-                redRectTransform.setContentSize(size.width, size.height / 20);
-                mask.children[0].addChild(redRectNode);
+                redRectTransform.setContentSize(size.width, size.height / 16);
+                this.node.addChild(redRectNode);
             }
             // Update the RedRect color to a random deep red color
             // const deepRedColor = new Color(255, Math.random()*100, Math.random()*100);
@@ -229,11 +237,12 @@ export class burningController extends Component {
 
         this.timeEplapsed += deltaTime; 
 
+        // const redRectNode = insenseMasks[0].children[0].getChildByName("RedRect");
         // 检查所有香总体燃烧进度是否超过 75%，如果超过那么就不再添加随机燃烧速率波动
         let totalCurHeight = 0;
         for (let i = 0; i < insenseMasks.length; i++) {
             const node = insenseMasks[i];
-            totalCurHeight += node.getComponent(UITransform).contentSize.height;
+            totalCurHeight += node.getComponent(UITransform).contentSize.height 
         }
         let totalProgress = totalCurHeight / (3 * insenseMasks[0].children[0].getComponent(UITransform).contentSize.height);
         // console.log("totalProgress", totalProgress);
@@ -253,7 +262,7 @@ export class burningController extends Component {
         const totalBurnRate = (totalCurHeight / remainingTime) * deltaTime;
         // console.log("totalBurnRate", totalBurnRate);
 
-        // 随机挑选一根香燃烧, 且香的 scale y 大于 0
+        // 随机挑选一根香燃烧, 且香的 height 大于 0
         let insenseMask: Node = null;
         const tmpInsenseNodes = insenseMasks.filter(node => node.getComponent(UITransform).contentSize.height > 0);
         while (!insenseMask && tmpInsenseNodes.length > 0) {
@@ -267,17 +276,25 @@ export class burningController extends Component {
         }
 
         if (insenseMask) {
-            const maskNewHeight = insenseMask.getComponent(UITransform).contentSize.height - totalBurnRate;
+            let maskNewHeight = insenseMask.getComponent(UITransform).contentSize.height - totalBurnRate ;
+            // 只在第一次循环时，增加 mask 一个 burn head 的初始高度
+            // if (remainingTime == this.timeQuota - deltaTime) {
+            //     console.log("add redRect height");
+            //     maskNewHeight +=  redRectNode.getComponent(UITransform).contentSize.height + 20
+            // }
             const oldWidth = insenseMask.getComponent(UITransform).contentSize.width;
             if (this.timeEplapsed <= this.timeQuota || maskNewHeight > 0) {
                 insenseMask.getComponent(UITransform).setContentSize(new Size(oldWidth, maskNewHeight));
             } else {
                 insenseMask.getComponent(UITransform).setContentSize(new Size(oldWidth, 0));
             }
-            const redRectNode = insenseMask.children[0].getChildByName("RedRect");
-            if (redRectNode) {
-                const redRectTransform = redRectNode.getComponent(UITransform);
-                redRectNode.setPosition(redRectNode.position.x, maskNewHeight+5, redRectNode.position.z);
+            const maskIndex = parseInt(insenseMask.children[0].name.split('-').pop());
+            const red = this.node.getChildByName("RedRect-" + maskIndex);
+            if (red) {
+                // const redRectTransform = red.getComponent(UITransform);
+                red.setPosition(red.position.x, insenseMask.getPosition().y + maskNewHeight-5, red.position.z);
+            } else {
+                console.log("redRectNode not found");
             }
 
         }

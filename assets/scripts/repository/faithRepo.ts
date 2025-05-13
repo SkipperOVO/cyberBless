@@ -29,6 +29,9 @@ export class FaithRepo {
         const mockData: Faith[] = [
             new Faith(1, "kongzi", "孔子"),
             new Faith(2, "laozi", "老子"),
+            new Faith(3, "getRichCat-01", "招财猫"),
+            new Faith(4, "getRichCat-02", "招财猫"),
+            new Faith(5, "godRich-01", "财神爷"),
         ]
 
         return mockData;
