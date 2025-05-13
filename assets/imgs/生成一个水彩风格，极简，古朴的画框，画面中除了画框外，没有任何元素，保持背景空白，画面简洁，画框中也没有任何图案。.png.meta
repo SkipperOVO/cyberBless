@@ -1,0 +1,134 @@
+{
+  "ver": "1.0.27",
+  "importer": "image",
+  "imported": true,
+  "uuid": "af85adce-601b-48bd-8668-38ca066654ca",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "af85adce-601b-48bd-8668-38ca066654ca@6c48a",
+      "displayName": "生成一个水彩风格，极简，古朴的画框，画面中除了画框外，没有任何元素，保持背景空白，画面简洁，画框中也没有任何图案。",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "clamp-to-edge",
+        "wrapModeT": "clamp-to-edge",
+        "imageUuidOrDatabaseUri": "af85adce-601b-48bd-8668-38ca066654ca",
+        "isUuid": true,
+        "visible": false,
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f9941": {
+      "importer": "sprite-frame",
+      "uuid": "af85adce-601b-48bd-8668-38ca066654ca@f9941",
+      "displayName": "生成一个水彩风格，极简，古朴的画框，画面中除了画框外，没有任何元素，保持背景空白，画面简洁，画框中也没有任何图案。",
+      "id": "f9941",
+      "name": "spriteFrame",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 5,
+        "trimX": 199,
+        "trimY": 79,
+        "width": 626,
+        "height": 856,
+        "rawWidth": 1024,
+        "rawHeight": 1024,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "pixelsToUnit": 100,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "meshType": 0,
+        "vertices": {
+          "rawPosition": [
+            -313,
+            -428,
+            0,
+            313,
+            -428,
+            0,
+            -313,
+            428,
+            0,
+            313,
+            428,
+            0
+          ],
+          "indexes": [
+            0,
+            1,
+            2,
+            2,
+            1,
+            3
+          ],
+          "uv": [
+            199,
+            945,
+            825,
+            945,
+            199,
+            89,
+            825,
+            89
+          ],
+          "nuv": [
+            0.1943359375,
+            0.0869140625,
+            0.8056640625,
+            0.0869140625,
+            0.1943359375,
+            0.9228515625,
+            0.8056640625,
+            0.9228515625
+          ],
+          "minPos": [
+            -313,
+            -428,
+            0
+          ],
+          "maxPos": [
+            313,
+            428,
+            0
+          ]
+        },
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "af85adce-601b-48bd-8668-38ca066654ca@6c48a",
+        "atlasUuid": ""
+      },
+      "ver": "1.0.12",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "hasAlpha": true,
+    "fixAlphaTransparencyArtifacts": false,
+    "redirect": "af85adce-601b-48bd-8668-38ca066654ca@6c48a"
+  }
+}
